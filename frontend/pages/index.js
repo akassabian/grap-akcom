@@ -6,7 +6,7 @@ const Home = props => (
 		<div className="container content-main">
 			<div className="row row-bio">						
 				<div className="col-xs-12 col-md-6 d-flex bio_pic_col justify-content-center justify-content-lg-end">
-					{/*<img className="display_pic" alt="Photo of Alain" src="<?php echo get_template_directory_uri(); ?>/images/display_pic_cropped.jpg" width="250" height="250">*/}
+					<img className="display_pic" alt="Photo of Alain" src="/static/display_pic_cropped.jpg" width="250" height="250" />
 				</div>
 				<div className="col-xs-12 col-md-6 d-flex flex-column justify-content-center">
 					<p className="text-center text-md-left">
@@ -28,7 +28,7 @@ const Home = props => (
 			<ul className="row row-topics justify-content-center">
 				<li className="col-12 col-md-6 d-flex justify-content-center flex-wrap">
 					<a href="https://registry.jsonresume.org/akassabian" className="topics-container">						
-						{/*<img alt="Image for Web Resume" src="<?php echo get_template_directory_uri(); ?>/images/web-resume.svg">*/}					
+						<img alt="Image for Web Resume" src="/static/web-resume.svg" />					
 						<div className="topics-overlay text-center d-flex flex-column justify-content-center">
 							<span>View Resume</span>
 						</div>
@@ -37,7 +37,7 @@ const Home = props => (
 				</li>
 				<li className="col-12 col-md-6 d-flex justify-content-center flex-wrap">
 					<a href="category/technology/" className="topics-container">						
-            {/*<img alt="Image for Tech Blog" src="<?php echo get_template_directory_uri(); ?>/images/tech.svg">*/}			
+            <img alt="Image for Tech Blog" src="/static/tech.svg" />	
 						<div className="topics-overlay text-center d-flex flex-column justify-content-center">
 							<span>View Blog</span>
 						</div>
@@ -46,7 +46,7 @@ const Home = props => (
 				</li>
 				<li className="col-12 col-md-6 d-flex justify-content-center flex-wrap">
 					<a href="category/health/" className="topics-container">						
-						{/*<img alt="Image for Health Blog" src="<?php echo get_template_directory_uri(); ?>/images/health.svg">*/}					
+						<img alt="Image for Health Blog" src="/static/health.svg" />
 						<div className="topics-overlay text-center d-flex flex-column justify-content-center">
 							<span>View Blog</span>
 						</div>
