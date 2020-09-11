@@ -1,0 +1,34 @@
+mutation addUser{
+  signup(email: "test6@test.com"
+  password: "test"
+  name: "test"
+  ){
+    email
+    permissions
+  }
+}
+
+mutation addUser2{
+  createUser(data:{
+  email: "test6@test.com"
+  password: "test"
+  name: "test"
+  }
+  ){
+    email
+    permissions
+  }
+}
+
+mutation addPost{
+  createPost(
+    id: 123
+title: "test"
+      type: "test"
+      content: "test"
+      comment_status: "test"
+      slug: "test"
+  ){
+    id
+  }
+}
