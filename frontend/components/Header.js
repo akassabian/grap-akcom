@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import Nav from './Nav';
-import Cart from './Cart';
-import Search from './Search';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -37,7 +35,10 @@ const Logo = styled.h1`
 `;
 
 const StyledHeader = styled.header`
+    background: #f7f7f7;
+
   .bar {
+
     border-bottom: 10px solid ${props => props.theme.black};
     display: grid;
     grid-template-columns: auto 1fr;
@@ -65,10 +66,6 @@ const Header = () => (
       </Logo>
       <Nav />
     </div>
-    <div className="sub-bar">
-      <Search />
-    </div>
-    <Cart />
   </StyledHeader>
 );
 

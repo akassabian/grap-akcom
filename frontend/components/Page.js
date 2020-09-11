@@ -5,7 +5,7 @@ import Meta from './Meta';
 
 const theme = {
   red: '#FF0000',
-  black: '#393939',
+  black: '#0e0e0e',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
@@ -14,7 +14,7 @@ const theme = {
 };
 
 const StyledPage = styled.div`
-  background: white;
+  background: ${theme.black};
   color: ${props => props.theme.black};
 `;
 
