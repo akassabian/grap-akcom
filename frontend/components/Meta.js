@@ -6,7 +6,9 @@ const Meta = () => (
     <meta charSet="utf-8" />
     <link rel="shortcut icon" href="/static/favicon.png" />
     <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
-    <title>Sick Fits!</title>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css" />
+    
+    <title>Alain Kassabian - Digital Media</title>
   </Head>
 );
 
