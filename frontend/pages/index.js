@@ -1,7 +1,129 @@
 import Items from '../components/Items';
+import styled from 'styled-components';
+
+const BgAjkDark = styled.div`
+  .row-bio {
+  margin: 0;
+  padding: 80px 0 0;
+  .bio_pic_col {
+    margin-bottom: 60px;
+  }
+}
+
+.row-bio-2 {
+  margin: 0 0 50px;
+  border-bottom: 3px solid #f7f7f7;
+  padding: 50px 0;
+}
+
+.display_pic {
+  border-radius: 50%;
+  border: 3px solid #f7f7f7;
+}
+
+.topics.container {
+  padding-top: 30px;
+}
+
+.row-topics {
+  background-color: #0e0e0e;
+  margin-bottom: 0;
+  list-style: none;
+  padding: 0 0 20px;
+
+  li {
+    padding: 0 20px;
+    margin-bottom: 70px;
+  }
+
+  .topics-container {
+    position: relative;
+    border: 1px solid #262626;
+    border-radius: 25px;
+    width: 100%;
+    height: 95%;
+    text-decoration: none;
+    color: white;
+    transition: 0.2s ease;
+  }
+  .topics-container:hover {
+    border: 1px solid #0e0e0e;
+  }
+
+  img {
+    width: 90%;
+  }
+
+  .topics-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 0.2s ease;
+    background-color: black;
+    opacity: 0;
+    top: 0;
+    border-radius: 25px;
+  }
+  .topics-container:hover .topics-overlay {
+    opacity: 0.9;
+  }
+}
+
+.row-cta {
+  padding: 40px 0 45px;
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+.ajk-button {
+  color: white;
+  padding: 20px;
+  border: 3px solid white;
+  transition-duration: .2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.ajk-button:hover {
+  background-color: white;
+  color: #0e0e0e !important;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .row-bio {
+    margin: 0 0 50px;
+    .bio_pic_col {
+      margin: 0;
+    }
+  }
+  .topics.container {
+    padding-top: 0;
+    .row-topics {
+      padding: 0 0 50px;
+      li {
+        padding: 0 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .row-cta h2 {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 992px) {
+  nav {
+    ul {
+      li {
+        margin: 0 20px;
+      }
+    }
+  }
+}
+`;
 
 const Home = props => (
-  <div>
+  <BgAjkDark>
 <div className="bg-ajk-dark">	
 		<div className="container content-main">
 			<div className="row row-bio">						
@@ -66,7 +188,7 @@ const Home = props => (
 			</div>
 		</div>
 	</div>
-  </div>
+  </BgAjkDark>
 );
 
 export default Home;
