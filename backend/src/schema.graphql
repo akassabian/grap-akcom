@@ -53,7 +53,12 @@ type Mutation {
 }
 
 type Query {
-  posts: [Post]!
+  posts(
+    where: PostWhereInput
+    orderBy: PostOrderByInput
+    skip: Int
+    first: Int
+  ): [Post]!
   post(where: PostWhereUniqueInput!): Post
   items(
     where: ItemWhereInput

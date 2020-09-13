@@ -19,7 +19,6 @@ const ALL_POSTS_QUERY = gql`
         comment_count
         password
         parent
-        author
         slug
         createdAt
         updatedAt
