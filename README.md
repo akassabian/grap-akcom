@@ -24,7 +24,7 @@ Install on the host:
 
 - [http://localhost:7777/](http://localhost:7777/) : Front-end
 - [http://localhost:4000/](http://localhost:4000/) : GraphQL Playground for backend
-- [http://localhost:4466/](http://localhost:4466/) : GraphQL Playground directly on Prisma
+- [http://localhost:4466/](http://localhost:4466/) : GraphQL Playground directly on Prisma (only if Prisma is on local Docker)
 
 ## Dues
 
