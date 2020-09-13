@@ -56,7 +56,7 @@ class Posts extends Component {
             return (
               <ItemsList>
                 {data.posts.map((post) => (
-                  <TechPost post={post} key={post.id} />
+                  <TechPost techPost={post} key={post.id} />
                 ))}
               </ItemsList>
             );
