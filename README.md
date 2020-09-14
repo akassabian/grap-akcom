@@ -14,7 +14,7 @@ Install on the host:
 1. Duplicate `backend/prisma/.env-example` as `.env` in `backend/prisma/`
 1. Run `npm install` in `backend/` and `frontend/`
 1. Run `docker-compose up` in `/backend/prisma`
-1. Run `npm install -g prisma` (should replace this instruction with a local install as per Prisma's manual)
+1. Run `npm install -g prisma` (may replace this instruction with a local install as per Prisma's manual)
 1. If Prisma 404s on Docker (eg. legacy Docker on Windows) then (a) run `prisma init`, (b) choose `demo server`, and (c) update `PRISMA_ENDPOINT` in `backend/prisma/.env`
 1. Run `prisma deploy` in `backend/prisma`
 1. Run `npm run dev` in `backend/` and `frontend/`
