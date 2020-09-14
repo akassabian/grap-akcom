@@ -9,7 +9,7 @@ import { perPage } from "../config";
 const ALL_POSTS_QUERY = gql`
   query ALL_POSTS_QUERY($skip: Int = 0, $first: Int = ${perPage}) {
     # items(first: $first, skip: $skip, orderBy: createdAt_DESC) {
-    posts(first: $first, skip: $skip) {
+    posts(where: {parent:1}, first: $first, skip: $skip) {
         id
         title
         type

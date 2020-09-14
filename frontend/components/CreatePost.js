@@ -13,6 +13,7 @@ const CREATE_POST_MUTATION = gql`
     $content: String
     $comment_status: String!
     $slug: String!
+    $parent: Int
   ) {
     createPost(
       title: $title
@@ -20,6 +21,7 @@ const CREATE_POST_MUTATION = gql`
       content: $content
       comment_status: $comment_status
       slug: $slug
+      parent: $parent
     ) {
       id
     }
@@ -95,6 +97,19 @@ class createPost extends Component {
                   placeholder="Enter Content Here"
                   required
                   value={this.state.content}
+                  onChange={this.handleChange}
+                />
+              </label>
+
+              <label htmlFor="parent">
+                Category
+                <input
+                  type="int"
+                  id="parent"
+                  name="parent"
+                  placeholder="Category"
+                  required
+                  value={this.state.parent}
                   onChange={this.handleChange}
                 />
               </label>
