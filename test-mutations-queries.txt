@@ -32,3 +32,9 @@ title: "test"
     id
   }
 }
+
+query techPosts{
+  posts(where: {parent:2}){
+    title
+  }
+}
