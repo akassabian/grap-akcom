@@ -9,14 +9,7 @@ const Nav = () => (
     {({ data }) => {
       console.log(data);
       const me = data ? data.me : null;
-      function isAdmin() {
-        if (me.permissions[0] === "ADMIN") {
-          return true;
-        } else {
-          return false;
-        }
-      }
-      const admin = isAdmin() ? true : null;
+      const admin = (me.permissions[0] === "ADMIN") ? true : null;
       return (
         <NavStyles data-test="nav">
           <Link href="/items">
