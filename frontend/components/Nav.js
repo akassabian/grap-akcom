@@ -7,7 +7,16 @@ import Signout from "./Signout";
 const Nav = () => (
   <User>
     {({ data }) => {
+      console.log(data);
       const me = data ? data.me : null;
+      function isAdmin() {
+        if (me.permissions[0] === "ADMIN") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      const admin = isAdmin() ? true : null;
       return (
         <NavStyles data-test="nav">
           <Link href="/items">
@@ -22,14 +31,18 @@ const Nav = () => (
           <Link href="/contact">
             <a>Contact</a>
           </Link>
-          {me && (
-            <>              
+          {admin && (
+            <>
               <Link href="/posts">
                 <a>posts</a>
               </Link>
               <Link href="/me">
                 <a>Account</a>
               </Link>
+            </>
+          )}
+          {me && (
+            <>              
               <Signout />
             </>
           )}
