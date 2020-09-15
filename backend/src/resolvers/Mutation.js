@@ -11,7 +11,14 @@ const Mutations = {
     if (!ctx.request.userId) {
       throw new Error('You must be logged in to do that!');
     }
+    // Check if they have permissions to do this
+    const hasPermissions = ctx.request.user.permissions.some(permission =>
+      ['ADMIN'].includes(permission)
+    );
 
+    if (!hasPermissions) {
+      throw new Error("You don't have permission to do that!");
+    }
     const post = await ctx.db.mutation.createPost(
       {
         data: {
