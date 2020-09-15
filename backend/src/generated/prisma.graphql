@@ -1,5 +1,5 @@
-# source: https://us1.prisma.sh/alain-kassabian/backend/dev
-# timestamp: Sun Sep 13 2020 13:03:06 GMT-0400 (Eastern Daylight Time)
+# source: http://localhost:4466
+# timestamp: Tue Sep 15 2020 13:13:33 GMT-0400 (Eastern Daylight Time)
 
 type AggregateCartItem {
   count: Int!
@@ -711,6 +711,9 @@ input ItemWhereUniqueInput {
   id: ID
 }
 
+"""Raw JSON value"""
+scalar Json
+
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
@@ -754,6 +757,7 @@ type Mutation {
   deleteManyItems(where: ItemWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyOrderItems(where: OrderItemWhereInput): BatchPayload!
+  executeRaw(database: PrismaDatabase, query: String!): Json!
 }
 
 enum MutationType {
@@ -2336,6 +2340,10 @@ input PostWhereInput {
 
 input PostWhereUniqueInput {
   id: ID
+}
+
+enum PrismaDatabase {
+  default
 }
 
 type Query {

@@ -1,3 +1,12 @@
+mutation makeAdmin{
+  updateUser( where: { id: "ckeiklh5z001d0730wfskliwk" }, data: {
+    permissions: { set: [ ADMIN ] } })
+    { 
+      email
+      permissions
+    }
+}
+
 mutation addUser{
   signup(email: "test6@test.com"
   password: "test"
@@ -18,6 +27,15 @@ mutation addUser2{
     email
     permissions
   }
+}
+
+mutation makeAdmin{
+  updateUser( where: { id: \"ckeiklh5z001d0730wfskliwk\" }, data: {
+    permissions: { set: [ ADMIN ] } })
+    { 
+      email
+      permissions
+    }
 }
 
 mutation addPost{
