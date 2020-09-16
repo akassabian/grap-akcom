@@ -34,9 +34,8 @@ const Logo = styled.h1`
 
 const StyledHeader = styled.header`
     background: #f7f7f7;
+    border-bottom: 8px solid #006;
   .bar {
-
-    border-bottom: 10px solid ${props => props.theme.black};
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
