@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Mutation } from "react-apollo";
 import NavStyles from "./styles/NavStyles";
 import User from "./User";
 import Signout from "./Signout";
@@ -9,7 +8,16 @@ const Nav = () => (
     {({ data }) => {
       console.log(data);
       const me = data ? data.me : null;
-      const admin = (me.permissions[0] === "ADMIN") ? true : null;
+      function ifAdmin (){
+        if(me){
+          if (me.permissions[0] === "ADMIN"){
+            return true
+          }
+          return null
+        }
+        return null
+      }
+      const admin = ifAdmin ();
       return (
         <NavStyles data-test="nav">
           <Link href="/items">
