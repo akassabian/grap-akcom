@@ -1,4 +1,4 @@
-import Items from '../components/Items';
+
 import styled from 'styled-components';
 
 const BgAjkDark = styled.div`
