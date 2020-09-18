@@ -23,7 +23,6 @@ export default class TechPost extends Component {
             <a>{techPost.title}</a>
           </Link>
         </Title>
-        <div>{techPost.content}</div>
       </ItemStyles>
     );
   }

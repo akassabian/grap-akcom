@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import styled from "styled-components";
 import TechPost from "./TechPost";
-import Pagination from "./Pagination";
+import TechPostSidebar from "./TechPostSidebar";
 import { perPage } from "../config";
 
 const ALL_POSTS_QUERY = gql`
@@ -102,7 +102,7 @@ class Posts extends Component {
                     return (
                       <ItemsList>
                         {data.posts.map((post) => (
-                          <TechPost techPost={post} key={post.id} />
+                          <TechPostSidebar techPost={post} key={post.id} />
                         ))}
                       </ItemsList>
                     );
