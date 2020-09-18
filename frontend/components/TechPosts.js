@@ -38,31 +38,101 @@ const ItemsList = styled.div`
   margin: 0 auto;
 `;
 
+const CategoryPage = styled.div`
+  background-color: #0e0e0e;
+  .content-main {
+    padding-top: 80px;
+  }
+  .content-main {
+    margin-top: 32px;
+    overflow: hidden;
+  }
+  .similar-blogs {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        margin-bottom: 20px;
+      }
+      a {
+        color: #f7f7f7;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #007bff;
+      }
+    }
+  }
+  .blog-content {
+    h2 {
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    .post-title-main {
+      color: #f7f7f7;
+      text-decoration: none;
+    }
+    .post-title-main:hover {
+      color: #007bff;
+    }
+  }
+`;
+
 class Posts extends Component {
   render() {
     return (
       <Center>
-        <Pagination page={this.props.page} />
-        <Query
-          query={ALL_POSTS_QUERY}
-          // fetchPolicy="network-only"
-          variables={{
-            skip: this.props.page * perPage - perPage,
-          }}
-        >
-          {({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error.message}</p>;
-            return (
-              <ItemsList>
-                {data.posts.map((post) => (
-                  <TechPost techPost={post} key={post.id} />
-                ))}
-              </ItemsList>
-            );
-          }}
-        </Query>
-        <Pagination page={this.props.page} />
+        <CategoryPage>
+          <div class="container content-main">
+            <div class="row">
+              <div class="col-12 col-md-3 similar-blogs">
+                <Query
+                  query={ALL_POSTS_QUERY}
+                  // fetchPolicy="network-only"
+                  variables={{
+                    skip: this.props.page * perPage - perPage,
+                  }}
+                >
+                  {({ data, error, loading }) => {
+                    if (loading) return <p>Loading...</p>;
+                    if (error) return <p>Error: {error.message}</p>;
+                    return (
+                      <ItemsList>
+                        {data.posts.map((post) => (
+                          <TechPost techPost={post} key={post.id} />
+                        ))}
+                      </ItemsList>
+                    );
+                  }}
+                </Query>
+              </div>
+              <div class="col-12 col-md-9 blog-content">
+                <Query
+                  query={ALL_POSTS_QUERY}
+                  // fetchPolicy="network-only"
+                  variables={{
+                    skip: this.props.page * perPage - perPage,
+                  }}
+                >
+                  {({ data, error, loading }) => {
+                    if (loading) return <p>Loading...</p>;
+                    if (error) return <p>Error: {error.message}</p>;
+                    return (
+                      <ItemsList>
+                        {data.posts.map((post) => (
+                          <TechPost techPost={post} key={post.id} />
+                        ))}
+                      </ItemsList>
+                    );
+                  }}
+                </Query>
+              </div>
+            </div>
+          </div>
+        </CategoryPage>
       </Center>
     );
   }
