@@ -90,7 +90,7 @@ class createPost extends Component {
 
               <label htmlFor="content">
                 Content
-                <input
+                <textarea
                   type="text"
                   id="content"
                   name="content"

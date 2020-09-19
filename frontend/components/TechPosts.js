@@ -52,6 +52,9 @@ const CategoryPage = styled.div`
     }
   }
   .blog-content {
+    ul{
+      white-space: pre-line;
+    }
     h2 {
       margin-bottom: 20px;
       margin-top: 30px;

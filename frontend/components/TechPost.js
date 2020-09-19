@@ -9,6 +9,9 @@ export default class TechPost extends Component {
 
   render() {
     const { techPost } = this.props;
+    function createMarkup() {
+      return { __html: techPost.content }
+    }
     return (
       <>
         <Link
@@ -23,7 +26,7 @@ export default class TechPost extends Component {
             </strong>
           </h2>
         </Link>
-        <div>{techPost.content}</div>
+        <div dangerouslySetInnerHTML={createMarkup()} />
       </>
     );
   }
