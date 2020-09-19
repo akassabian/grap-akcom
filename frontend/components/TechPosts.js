@@ -26,18 +26,6 @@ const ALL_POSTS_QUERY = gql`
   }
 `;
 
-const Center = styled.div`
-  text-align: center;
-`;
-
-const ItemsList = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
-  max-width: ${(props) => props.theme.maxWidth};
-  margin: 0 auto;
-`;
-
 const CategoryPage = styled.div`
   background-color: #0e0e0e;
   .content-main {
@@ -81,62 +69,67 @@ const CategoryPage = styled.div`
   }
 `;
 
-class Posts extends Component {
+class TechPosts extends Component {
   render() {
     return (
-      <Center>
-        <CategoryPage>
-          <div class="container content-main">
-            <div class="row">
-              <div class="col-12 col-md-3 similar-blogs">
-                <Query
-                  query={ALL_POSTS_QUERY}
-                  // fetchPolicy="network-only"
-                  variables={{
-                    skip: this.props.page * perPage - perPage,
-                  }}
-                >
-                  {({ data, error, loading }) => {
-                    if (loading) return <p>Loading...</p>;
-                    if (error) return <p>Error: {error.message}</p>;
-                    return (
-                      <ItemsList>
-                        {data.posts.map((post) => (
-                          <TechPostSidebar techPost={post} key={post.id} />
-                        ))}
-                      </ItemsList>
-                    );
-                  }}
-                </Query>
-              </div>
-              <div class="col-12 col-md-9 blog-content">
-                <Query
-                  query={ALL_POSTS_QUERY}
-                  // fetchPolicy="network-only"
-                  variables={{
-                    skip: this.props.page * perPage - perPage,
-                  }}
-                >
-                  {({ data, error, loading }) => {
-                    if (loading) return <p>Loading...</p>;
-                    if (error) return <p>Error: {error.message}</p>;
-                    return (
-                      <ItemsList>
-                        {data.posts.map((post) => (
-                          <TechPost techPost={post} key={post.id} />
-                        ))}
-                      </ItemsList>
-                    );
-                  }}
-                </Query>
-              </div>
+      <CategoryPage>
+        <div class="container content-main">
+          <div class="row">
+            <div class="col-12 col-md-3 similar-blogs">
+              <Query
+                query={ALL_POSTS_QUERY}
+                // fetchPolicy="network-only"
+                variables={{
+                  skip: this.props.page * perPage - perPage,
+                }}
+              >
+                {({ data, error, loading }) => {
+                  if (loading) return <p>Loading...</p>;
+                  if (error) return <p>Error: {error.message}</p>;
+                  return (
+                    <ul>
+                      <li>
+                        <h2>
+                          <strong>
+                            <a href="#">Technology</a>
+                          </strong>
+                        </h2>
+                      </li>
+                      {data.posts.map((post) => (
+                        <TechPostSidebar techPost={post} key={post.id} />
+                      ))}
+                    </ul>
+                  );
+                }}
+              </Query>
+            </div>
+            <div class="col-12 col-md-9 blog-content">
+              <Query
+                query={ALL_POSTS_QUERY}
+                // fetchPolicy="network-only"
+                variables={{
+                  skip: this.props.page * perPage - perPage,
+                }}
+              >
+                {({ data, error, loading }) => {
+                  if (loading) return <p>Loading...</p>;
+                  if (error) return <p>Error: {error.message}</p>;
+                  return (
+                    <ul>
+                      {data.posts.map((post) => (
+                        <TechPost techPost={post} key={post.id} />
+                      ))}
+                    </ul>
+                  );
+                }}
+              </Query>
             </div>
           </div>
-        </CategoryPage>
-      </Center>
+        </div>
+      </CategoryPage>
     );
   }
 }
 
-export default Posts;
+export default TechPosts;
 export { ALL_POSTS_QUERY };
