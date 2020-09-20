@@ -6,7 +6,7 @@ import HealthPost from "./HealthPost";
 import HealthPostSidebar from "./HealthPostSidebar";
 import { perPage } from "../config";
 
-const ALL_POSTS_QUERY = gql`
+const ALL_HEALTH_POSTS_QUERY = gql`
   query ALL_POSTS_QUERY($skip: Int = 0, $first: Int = ${perPage}) {
     # items(first: $first, skip: $skip, orderBy: createdAt_DESC) {
     posts(where: {parent:2}, first: $first, skip: $skip) {
@@ -80,7 +80,7 @@ class HealthPosts extends Component {
           <div class="row">
             <div class="col-12 col-md-3 similar-blogs">
               <Query
-                query={ALL_POSTS_QUERY}
+                query={ALL_HEALTH_POSTS_QUERY}
                 // fetchPolicy="network-only"
                 variables={{
                   skip: this.props.page * perPage - perPage,
@@ -108,7 +108,7 @@ class HealthPosts extends Component {
             </div>
             <div class="col-12 col-md-9 blog-content">
               <Query
-                query={ALL_POSTS_QUERY}
+                query={ALL_HEALTH_POSTS_QUERY}
                 // fetchPolicy="network-only"
                 variables={{
                   skip: this.props.page * perPage - perPage,
@@ -135,4 +135,4 @@ class HealthPosts extends Component {
 }
 
 export default HealthPosts;
-export { ALL_POSTS_QUERY };
+export { ALL_HEALTH_POSTS_QUERY };

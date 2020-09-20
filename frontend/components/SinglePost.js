@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { Row, Col } from "antd";
 import Error from "./ErrorMessage";
 import styled from "styled-components";
 import Head from "next/head";
+import TechSinglePostSidebar from "./TechSinglePostSidebar";
+import HealthSinglePostSidebar from "./HealthSinglePostSidebar";
 
 const SinglePostStyles = styled.div`
   max-width: 1200px;
@@ -31,40 +32,64 @@ const SINGLE_POST_QUERY = gql`
       id
       title
       content
+      parent
     }
   }
 `;
 class SinglePost extends Component {
   render() {
     return (
-      <Row gutter={[16, 16]}>
-        <Col span={24}>
-          <Query
-            query={SINGLE_POST_QUERY}
-            variables={{
-              id: this.props.id,
-            }}
-          >
-            {({ error, loading, data }) => {
-              if (error) return <Error error={error} />;
-              if (loading) return <p>Loading...</p>;
-              if (!data.post) return <p>No Post Found for {this.props.id}</p>;
-              const post = data.post;
-              return (
-                <SinglePostStyles>
-                  <Head>
-                    <title>Sick Fits | {post.title}</title>
-                  </Head>
-                  <div className="details">
-                    <h2>Viewing {post.title}</h2>
-                    <p>{post.content}</p>
+      <Query
+        query={SINGLE_POST_QUERY}
+        variables={{
+          id: this.props.id,
+        }}
+      >
+        {({ error, loading, data }) => {
+          if (error) return <Error error={error} />;
+          if (loading) return <p>Loading...</p>;
+          if (!data.post) return <p>No Post Found for {this.props.id}</p>;
+          const post = data.post;
+          function whatCat(post) {
+            if (post.parent === 1) {
+              return "<TechSinglePostSidebar />";
+            }
+            if (post.parent === 2) {
+              return "<TechSinglePostSidebar />";
+            }
+            return null;
+          }
+
+          const sideBar = whatCat(post);
+
+          return (
+            <SinglePostStyles>
+              <Head>
+                <title>Alain Kassabian | {post.title}</title>
+              </Head>
+              <div class="container content-main">
+                <div class="row">
+                  <div class="col-12 col-md-3 similar-blogs">
+                    <ul>
+                      {console.log(post.parent)}
+                      {post.parent === 1 && <TechSinglePostSidebar />}
+                      {post.parent === 2 && <HealthSinglePostSidebar />}
+                    </ul>
                   </div>
-                </SinglePostStyles>
-              );
-            }}
-          </Query>
-        </Col>
-      </Row>
+                  <div class="col-12 col-md-9 blog-content">
+                    <div className="details">
+                      <h2>
+                        <strong>Viewing {post.title}</strong>
+                      </h2>
+                      <p>{post.content}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SinglePostStyles>
+          );
+        }}
+      </Query>
     );
   }
 }

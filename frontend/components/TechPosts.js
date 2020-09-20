@@ -6,7 +6,7 @@ import TechPost from "./TechPost";
 import TechPostSidebar from "./TechPostSidebar";
 import { perPage } from "../config";
 
-const ALL_POSTS_QUERY = gql`
+const ALL_TECH_POSTS_QUERY = gql`
   query ALL_POSTS_QUERY($skip: Int = 0, $first: Int = ${perPage}) {
     # items(first: $first, skip: $skip, orderBy: createdAt_DESC) {
     posts(where: {parent:1}, first: $first, skip: $skip) {
@@ -80,7 +80,7 @@ class TechPosts extends Component {
           <div class="row">
             <div class="col-12 col-md-3 similar-blogs">
               <Query
-                query={ALL_POSTS_QUERY}
+                query={ALL_TECH_POSTS_QUERY}
                 // fetchPolicy="network-only"
                 variables={{
                   skip: this.props.page * perPage - perPage,
@@ -108,7 +108,7 @@ class TechPosts extends Component {
             </div>
             <div class="col-12 col-md-9 blog-content">
               <Query
-                query={ALL_POSTS_QUERY}
+                query={ALL_TECH_POSTS_QUERY}
                 // fetchPolicy="network-only"
                 variables={{
                   skip: this.props.page * perPage - perPage,
@@ -135,4 +135,4 @@ class TechPosts extends Component {
 }
 
 export default TechPosts;
-export { ALL_POSTS_QUERY };
+export { ALL_TECH_POSTS_QUERY };
