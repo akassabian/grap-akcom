@@ -28,7 +28,9 @@ export default class Post extends Component {
               <li>
                 <h2>
                   <strong>
-                    <a href="#">Health</a>
+                    <Link href="/health">
+                      <a>Health</a>
+                    </Link>
                   </strong>
                 </h2>
               </li>
