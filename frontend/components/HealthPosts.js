@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import styled from "styled-components";
 import HealthPost from "./HealthPost";
-import Pagination from "./Pagination";
+import HealthPostSidebar from "./HealthPostSidebar";
 import { perPage } from "../config";
 
 const ALL_POSTS_QUERY = gql`
@@ -26,47 +26,113 @@ const ALL_POSTS_QUERY = gql`
   }
 `;
 
-const Center = styled.div`
-  text-align: center;
+const CategoryPage = styled.div`
+  background-color: #0e0e0e;
+  .content-main {
+    margin-top: 32px;
+    overflow: hidden;
+  }
+  .similar-blogs {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        margin-bottom: 20px;
+      }
+      a {
+        color: #f7f7f7;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #007bff;
+      }
+    }
+  }
+  .blog-content {
+    ul{
+      white-space: pre-line;
+    }
+    h2 {
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    .post-title-main {
+      color: #f7f7f7;
+      text-decoration: none;
+    }
+    .post-title-main:hover {
+      color: #007bff;
+    }
+    a{
+      color: #007bff;
+    }
+  }
 `;
 
-const ItemsList = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
-  max-width: ${(props) => props.theme.maxWidth};
-  margin: 0 auto;
-`;
-
-class Posts extends Component {
+class HealthPosts extends Component {
   render() {
     return (
-      <Center>
-        <Pagination page={this.props.page} />
-        <Query
-          query={ALL_POSTS_QUERY}
-          // fetchPolicy="network-only"
-          variables={{
-            skip: this.props.page * perPage - perPage,
-          }}
-        >
-          {({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error.message}</p>;
-            return (
-              <ItemsList>
-                {data.posts.map((post) => (
-                  <HealthPost healthPost={post} key={post.id} />
-                ))}
-              </ItemsList>
-            );
-          }}
-        </Query>
-        <Pagination page={this.props.page} />
-      </Center>
+      <CategoryPage>
+        <div class="container content-main">
+          <div class="row">
+            <div class="col-12 col-md-3 similar-blogs">
+              <Query
+                query={ALL_POSTS_QUERY}
+                // fetchPolicy="network-only"
+                variables={{
+                  skip: this.props.page * perPage - perPage,
+                }}
+              >
+                {({ data, error, loading }) => {
+                  if (loading) return <p>Loading...</p>;
+                  if (error) return <p>Error: {error.message}</p>;
+                  return (
+                    <ul>
+                      <li>
+                        <h2>
+                          <strong>
+                            <a href="#">Health</a>
+                          </strong>
+                        </h2>
+                      </li>
+                      {data.posts.map((post) => (
+                        <HealthPostSidebar healthPost={post} key={post.id} />
+                      ))}
+                    </ul>
+                  );
+                }}
+              </Query>
+            </div>
+            <div class="col-12 col-md-9 blog-content">
+              <Query
+                query={ALL_POSTS_QUERY}
+                // fetchPolicy="network-only"
+                variables={{
+                  skip: this.props.page * perPage - perPage,
+                }}
+              >
+                {({ data, error, loading }) => {
+                  if (loading) return <p>Loading...</p>;
+                  if (error) return <p>Error: {error.message}</p>;
+                  return (
+                    <ul>
+                      {data.posts.map((post) => (
+                        <HealthPost healthPost={post} key={post.id} />
+                      ))}
+                    </ul>
+                  );
+                }}
+              </Query>
+            </div>
+          </div>
+        </div>
+      </CategoryPage>
     );
   }
 }
 
-export default Posts;
+export default HealthPosts;
 export { ALL_POSTS_QUERY };

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import Title from "./styles/Title";
-import ItemStyles from "./styles/ItemStyles";
 
 export default class HealthPost extends Component {
   static propTypes = {
@@ -11,19 +9,25 @@ export default class HealthPost extends Component {
 
   render() {
     const { healthPost } = this.props;
+    function createMarkup() {
+      return { __html: healthPost.content };
+    }
     return (
-      <ItemStyles>
-        <Title>
-          <Link
-            href={{
-              pathname: "/post",
-              query: { id: healthPost.id },
-            }}
-          >
-            <a>{healthPost.title}</a>
-          </Link>
-        </Title>
-      </ItemStyles>
+      <>
+        <h2>
+          <strong>
+            <Link
+              href={{
+                pathname: "/post",
+                query: { id: healthPost.id },
+              }}
+            >
+              <a class="post-title-main">{healthPost.title}</a>
+            </Link>
+          </strong>
+        </h2>
+        <div dangerouslySetInnerHTML={createMarkup()} />
+      </>
     );
   }
 }
