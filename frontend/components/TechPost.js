@@ -10,22 +10,22 @@ export default class TechPost extends Component {
   render() {
     const { techPost } = this.props;
     function createMarkup() {
-      return { __html: techPost.content }
+      return { __html: techPost.content };
     }
     return (
       <>
-        <Link
-          href={{
-            pathname: "/post",
-            query: { id: techPost.id },
-          }}
-        >
-          <h2>
-            <strong>
+        <h2>
+          <strong>
+            <Link
+              href={{
+                pathname: "/post",
+                query: { id: techPost.id },
+              }}
+            >
               <a class="post-title-main">{techPost.title}</a>
-            </strong>
-          </h2>
-        </Link>
+            </Link>
+          </strong>
+        </h2>
         <div dangerouslySetInnerHTML={createMarkup()} />
       </>
     );
