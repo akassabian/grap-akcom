@@ -29,9 +29,6 @@ const ALL_POSTS_QUERY = gql`
 const CategoryPage = styled.div`
   background-color: #0e0e0e;
   .content-main {
-    padding-top: 80px;
-  }
-  .content-main {
     margin-top: 32px;
     overflow: hidden;
   }
@@ -67,6 +64,9 @@ const CategoryPage = styled.div`
       text-decoration: none;
     }
     .post-title-main:hover {
+      color: #007bff;
+    }
+    a{
       color: #007bff;
     }
   }
