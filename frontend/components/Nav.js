@@ -20,7 +20,7 @@ const Nav = () => (
       const admin = ifAdmin ();
       return (
         <NavStyles data-test="nav">
-          <Link href="/items">
+          <Link href="https://registry.jsonresume.org/akassabian">
             <a>Resume</a>
           </Link>
           <Link href="/tech">
