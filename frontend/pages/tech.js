@@ -1,7 +1,7 @@
 import TechPosts from '../components/TechPosts';
 
 const Tech = props => (
-  <div>
+  <div class="category">
     <TechPosts page={parseFloat(props.query.page) || 1} />
   </div>
 );

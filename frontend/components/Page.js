@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled, { ThemeProvider, injectGlobal } from "styled-components";
 import Header from "./Header";
 import Meta from "./Meta";
-import Footer from '../components/Footer';
+import Footer from "../components/Footer";
 
 const theme = {
   red: "#FF0000",
@@ -53,21 +53,19 @@ const StyledPage = styled.div`
     color: black;
     font-size: 1rem;
   }
-  .single-post,
-  .category {
-    footer {
-      margin-top: 20px;
-      background-color: #0e0e0e;
-      border-top: 5px solid #f7f7f7;
-      .social-icons ul {
-        border-color: #f7f7f7;
-        svg path {
-          fill: #f7f7f7;
-        }
+  .single-post+footer,
+  .category+footer {
+    margin-top: 20px;
+    background-color: #0e0e0e;
+    border-top: 5px solid #f7f7f7;
+    .social-icons ul {
+      border-color: #f7f7f7;
+      svg path {
+        fill: #f7f7f7;
       }
-      p {
-        color: #f7f7f7;
-      }
+    }
+    p {
+      color: #f7f7f7;
     }
   }
 `;
@@ -113,8 +111,10 @@ class Page extends Component {
         <StyledPage>
           <Meta />
           <Header />
-          <Inner>{this.props.children}</Inner>
-          <Footer />
+          <Inner>
+            {this.props.children}
+            <Footer />
+          </Inner>
         </StyledPage>
       </ThemeProvider>
     );

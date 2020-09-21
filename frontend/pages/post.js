@@ -1,7 +1,7 @@
 import SinglePost from "../components/SinglePost";
 
 const Post = (props) => (
-  <div>
+  <div class="single-post">
     <SinglePost id={props.query.id} />
   </div>
 );
