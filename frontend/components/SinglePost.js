@@ -8,6 +8,7 @@ import TechSinglePostSidebar from "./TechSinglePostSidebar";
 import HealthSinglePostSidebar from "./HealthSinglePostSidebar";
 
 const SinglePostStyles = styled.div`
+  white-space: pre-line;
   max-width: 1200px;
   margin: 2rem auto;
   box-shadow: ${(props) => props.theme.bs};
@@ -61,6 +62,9 @@ class SinglePost extends Component {
           }
 
           const sideBar = whatCat(post);
+          function createMarkup() {
+            return { __html: post.content };
+          }
 
           return (
             <SinglePostStyles>
@@ -79,9 +83,9 @@ class SinglePost extends Component {
                   <div class="col-12 col-md-9 blog-content">
                     <div className="details">
                       <h2>
-                        <strong>Viewing {post.title}</strong>
+                        <strong>{post.title}</strong>
                       </h2>
-                      <p>{post.content}</p>
+                      <div dangerouslySetInnerHTML={createMarkup()} />
                     </div>
                   </div>
                 </div>
