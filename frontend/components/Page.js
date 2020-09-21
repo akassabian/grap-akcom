@@ -53,8 +53,8 @@ const StyledPage = styled.div`
     color: black;
     font-size: 1rem;
   }
-  .single-post+footer,
-  .category+footer {
+  .single-post + footer,
+  .category + footer {
     margin-top: 20px;
     background-color: #0e0e0e;
     border-top: 5px solid #f7f7f7;
