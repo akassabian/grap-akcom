@@ -51,6 +51,7 @@ const CategoryPage = styled.div`
   .blog-content {
     ul{
       white-space: pre-line;
+      padding-left: 0;
     }
     h2 {
       margin-bottom: 20px;
