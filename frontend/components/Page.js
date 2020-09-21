@@ -74,6 +74,7 @@ const Inner = styled.div`
   max-width: ${(props) => props.theme.maxWidth};
   width: 100%;
   margin: 0 auto;
+  padding-top: 68px;
 `;
 
 injectGlobal`

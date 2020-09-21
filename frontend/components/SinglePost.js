@@ -38,6 +38,7 @@ const SinglePostStyles = styled.div`
     }
   }
   .blog-content {
+    margin-bottom: 20px;
     h2 {
       margin-bottom: 20px;
       margin-top: 30px;

@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import styled from 'styled-components';
-import NProgress from 'nprogress';
-import Router from 'next/router';
-import Nav from './Nav';
+import Link from "next/link";
+import styled from "styled-components";
+import NProgress from "nprogress";
+import Router from "next/router";
+import Nav from "./Nav";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -33,8 +33,12 @@ const Logo = styled.h1`
 `;
 
 const StyledHeader = styled.header`
-    background: #f7f7f7;
-    border-bottom: 8px solid #006;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top:0;
+  background: #f7f7f7;
+  border-bottom: 8px solid #006;
   .bar {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -48,7 +52,7 @@ const StyledHeader = styled.header`
   .sub-bar {
     display: grid;
     grid-template-columns: 1fr auto;
-    border-bottom: 1px solid ${props => props.theme.lightgrey};
+    border-bottom: 1px solid ${(props) => props.theme.lightgrey};
   }
 `;
 

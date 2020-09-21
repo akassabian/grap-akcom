@@ -5,6 +5,7 @@ const BgAjkDark = styled.div`
   .row-bio {
     margin: 0;
     padding: 80px 0 0;
+    font-size: 24px;
     .bio_pic_col {
       margin-bottom: 60px;
     }
@@ -14,6 +15,7 @@ const BgAjkDark = styled.div`
     margin: 0 0 50px;
     border-bottom: 3px solid #f7f7f7;
     padding: 50px 0;
+    font-size: 24px;
   }
 
   .display_pic {
@@ -30,6 +32,7 @@ const BgAjkDark = styled.div`
     margin-bottom: 0;
     list-style: none;
     padding: 0 0 20px;
+    font-size: 24px;
 
     li {
       padding: 0 20px;
@@ -72,7 +75,7 @@ const BgAjkDark = styled.div`
   .row-cta {
     padding: 40px 0 45px;
     h2 {
-      font-size: 1.8rem;
+      font-size: 32px;
     }
   }
 
@@ -83,6 +86,7 @@ const BgAjkDark = styled.div`
     transition-duration: 0.2s;
     text-decoration: none;
     display: inline-block;
+    font-size: 24px;
   }
 
   .ajk-button:hover {
