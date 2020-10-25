@@ -1,7 +1,7 @@
 import HealthPosts from '../components/HealthPosts';
 
 const Health = props => (
-  <div>
+  <div class="category">
     <HealthPosts page={parseFloat(props.query.page) || 1} />
   </div>
 );

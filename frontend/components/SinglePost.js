@@ -8,6 +8,7 @@ import TechSinglePostSidebar from "./TechSinglePostSidebar";
 import HealthSinglePostSidebar from "./HealthSinglePostSidebar";
 
 const SinglePostStyles = styled.div`
+  white-space: pre-line;
   max-width: 1200px;
   margin: 2rem auto;
   box-shadow: ${(props) => props.theme.bs};
@@ -15,14 +16,61 @@ const SinglePostStyles = styled.div`
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
   min-height: 800px;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+
+  .content-main {
+    margin-top: 32px;
+    overflow: hidden;
   }
-  .details {
-    margin: 3rem;
-    font-size: 2rem;
+  .similar-blogs {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        margin-bottom: 20px;
+      }
+      a {
+        color: #f7f7f7;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #007bff;
+      }
+    }
+  }
+  .blog-content {
+    margin-bottom: 20px;
+    h2 {
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    .post-title-main {
+      color: #f7f7f7;
+      text-decoration: none;
+    }
+    .post-title-main:hover {
+      color: #007bff;
+    }
+  }
+
+  .similar-blogs {
+    order: 2;
+  }
+  .blog-content {
+    order: 1;
+  }
+  a {
+    color: #007bff;
+  }
+  @media (min-width: 768px) {
+    .similar-blogs {
+      order: 1;
+    }
+    .blog-content {
+      order: 2;
+    }
   }
 `;
 
@@ -61,6 +109,9 @@ class SinglePost extends Component {
           }
 
           const sideBar = whatCat(post);
+          function createMarkup() {
+            return { __html: post.content };
+          }
 
           return (
             <SinglePostStyles>
@@ -79,9 +130,9 @@ class SinglePost extends Component {
                   <div class="col-12 col-md-9 blog-content">
                     <div className="details">
                       <h2>
-                        <strong>Viewing {post.title}</strong>
+                        <strong>{post.title}</strong>
                       </h2>
-                      <p>{post.content}</p>
+                      <div dangerouslySetInnerHTML={createMarkup()} />
                     </div>
                   </div>
                 </div>
