@@ -1,3 +1,25 @@
+query allPosts {
+  posts{
+    title
+  }
+}
+
+query allUsers {
+  users{
+    id
+  }
+}
+
+mutation addUser{
+  signup(email: "test67@test.com"
+  password: "test"
+  name: "test"
+  ){
+    email
+    permissions
+  }
+}
+
 mutation makeAdmin{
   updateUser( where: { id: "ckeiklh5z001d0730wfskliwk" }, data: {
     permissions: { set: [ ADMIN ] } })
