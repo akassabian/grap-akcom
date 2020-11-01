@@ -29,13 +29,13 @@ const CREATE_POST_MUTATION = gql`
 `;
 
 function createPost(){
-  const title = useState('');
-  const type = useState('post');
-  const content = useState('');
-  const comment_status = useState('off');
-  const slug = useState('');
+  const [title, setTitle] = useState('');
+  const [type, setType ] = useState('post');
+  const [content, setContent ] = useState('');
+  const [comment_status, setComment_status] = useState('off');
+  const [slug, setSlug] = useState('');
 
-  handleChange = e => {
+  function handleChange (e) {
     const { name, type, value } = e.target;
     const val = type === 'number' ? parseFloat(value) : value;
     this.setState({ [name]: val });
