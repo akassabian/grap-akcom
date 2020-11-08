@@ -29,12 +29,30 @@ const CREATE_POST_MUTATION = gql`
 `;
 
 function createPost() {
-  const [title, setTitle] = useState("");
-  const [type, setType] = useState("post");
-  const [content, setContent] = useState("");
-  const [comment_status, setComment_status] = useState("off");
-  const [slug, setSlug] = useState("");
-  const [parent, setParent] = useState("");
+//  const [title, setTitle] = useState("");
+//  const [type, setType] = useState("post");
+//  const [content, setContent] = useState("");
+//  const [comment_status, setComment_status] = useState("off");
+//  const [slug, setSlug] = useState("");
+//  const [parent, setParent] = useState("");
+  const {state, setState} = ({
+    title: "",
+    type: "post",
+    content: "",
+    comment_status: "off",
+    slug: "",
+    parent: ""
+  });
+
+  function handleChange(e) {
+    const { name, type, value } = e.target;
+    //if type === number then set VAL to the Floating Integer of VALUE, else set VAL to VALUE
+    const val = type === "number" ? parseFloat(value) : value;
+    setState({ 
+      ...state,
+      name: val });
+  }
+
 
   function handleChangeTitle(e) {
     const { name, type, value } = e.target;
@@ -79,7 +97,7 @@ function createPost() {
   }
 
   return (
-    <Mutation mutation={CREATE_POST_MUTATION} variables={{title, type, content, comment_status, slug, parent}}>
+    <Mutation mutation={CREATE_POST_MUTATION} variables={{state}}>
       {(createPost, { loading, error }) => (
         <Form
           //data-test="form"
@@ -106,8 +124,8 @@ function createPost() {
                 name="title"
                 placeholder="Title"
                 required
-                value={title}
-                onChange={handleChangeTitle}
+                value={state.title}
+                onChange={handleChange}
               />
             </label>
 
@@ -119,8 +137,8 @@ function createPost() {
                 name="slug"
                 placeholder="Slug"
                 required
-                value={slug}
-                onChange={handleChangeSlug}
+                value={state.slug}
+                onChange={handleChange}
               />
             </label>
 
@@ -132,8 +150,8 @@ function createPost() {
                 name="content"
                 placeholder="Enter Content Here"
                 required
-                value={content}
-                onChange={handleChangeContent}
+                value={state.content}
+                onChange={handleChange}
               />
             </label>
 
@@ -145,7 +163,7 @@ function createPost() {
                 name="parent"
                 placeholder="Category"
                 required
-                value={parent}
+                value={state.parent}
                 onChange={handleChangeParent}
               />
             </label>
