@@ -35,7 +35,7 @@ function createPost() {
 //  const [comment_status, setComment_status] = useState("off");
 //  const [slug, setSlug] = useState("");
 //  const [parent, setParent] = useState("");
-  const {state, setState} = ({
+  const [state, setState] = useState({
     title: "",
     type: "post",
     content: "",
@@ -50,7 +50,7 @@ function createPost() {
     const val = type === "number" ? parseFloat(value) : value;
     setState({ 
       ...state,
-      name: val });
+      [name]: val });
   }
 
 
@@ -97,7 +97,7 @@ function createPost() {
   }
 
   return (
-    <Mutation mutation={CREATE_POST_MUTATION} variables={{state}}>
+    <Mutation mutation={CREATE_POST_MUTATION} variables={state}>
       {(createPost, { loading, error }) => (
         <Form
           //data-test="form"
@@ -164,7 +164,7 @@ function createPost() {
                 placeholder="Category"
                 required
                 value={state.parent}
-                onChange={handleChangeParent}
+                onChange={handleChange}
               />
             </label>
 
