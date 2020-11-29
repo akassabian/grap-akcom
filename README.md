@@ -19,6 +19,10 @@ Install on the host:
 1. Run `prisma deploy` in `backend/prisma`
 1. Run `npm run dev` in `backend/` and `frontend/`
 
+## Dokku Deploy
+
+## Styles
+`frontend/components/Page.js` contains main styles
 
 ## Links of Interest
 
