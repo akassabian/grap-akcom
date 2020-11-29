@@ -21,6 +21,9 @@ Install on the host:
 
 ## Dokku Deploy
 
+`git subtree push --prefix backend dokku-back master`
+`git subtree push --prefix frontend dokku-front master`
+
 ## Styles
 `frontend/components/Page.js` contains main styles
 
