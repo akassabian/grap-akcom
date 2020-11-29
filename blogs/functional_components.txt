@@ -1,47 +1,30 @@
-<a href="#class-component">[SEE CLASS COMPONENT]</a> <a href="function-component">[SEE FUNCTION COMPONENT]</a> <a href="https://github.com/akassabian/grap-akcom/blob/master/frontend/components/CreatePost.js">[SEE GIT]</a>
-<br>
-<br>
-<br>
-<b>FUNCTIONAL COMPONENTS</b>
-<br>
-<br>
+<a href="#class-component">[SEE CLASS COMPONENT]</a> <a href="#function-component">[SEE FUNCTION COMPONENT]</a> <a href="https://github.com/akassabian/grap-akcom/blob/master/frontend/components/CreatePost.js">[SEE GIT]</a>
+
+<b>FUNCTION COMPONENTS</b>
 React components can either be either classes or functions. Function components are, in many cases, more readable, more concise, and less resource intensive at run time.
-<br>
-<br>
-While class based components will continue to be supported for “the foreseeable future, React (Facebook) is positioning functional components as one of React’s primary design patterns.[1] For example, React Hooks have removed one of the primary limitations of functional components by allowing them to read and write to and from state.
-<br>
-<br>
-This is one of the limitations that would otherwise make it difficult or impossible for a function component to replace the class component that was previously responsible for creating posts in the GRAP framework this akassabian.com runs on.
-<br>
-<br>
-<br>
+
+While class based components will continue to be supported for “the foreseeable future," React (Facebook) is positioning functional components as one of React’s primary design patterns.[1] For example, React Hooks have removed one of the primary limitations of functional components by allowing them to read and write to and from state.
+
+This is one of the limitations that would otherwise make it difficult or impossible for a function component to replace the class component that was previously responsible for creating posts in the GRAP framework that akassabian.com runs on.
+
 <b>INITIALIZE REACT STATE HOOK</b>
-<br>
-<br>
-Functional components can’t interact with state in the same way that class components can because “[n]ormally, variables “disappear” when the function exits but state variables are preserved by React.”[2] By contrast, React will preserve values that are initialized by the State Hook, even after the function has been executed.
-<br>
-<br>
-This is important because the class component [SEE CLASS COMPONENT], initializes state that is then updated by a handleChange function that is called whenever a user enters data into the createPost form. The function version of this component will operate in the same way but state will be initialized and updated via the State Hook.
-<br>
-<br>
+Functional components can’t interact with state in the same way that class components can because “[n]ormally, variables “disappear” when the function exits.”[2] By contrast, React will preserve variables that are initialized by the State Hook, even after the function has been executed.
+
+This is important because the class component <a href="#class-component">[SEE CLASS COMPONENT]</a>, initializes state that is then updated by a handleChange function that is called whenever a user enters data into the createPost form. The function version of this component will operate in the same way but state will be initialized and updated via the State Hook.
+
 React’s docs give the following example for using State Hooks to initialize state within a function component:
 
-<pre>
-  <code class="language-js">
+<script type="text/plain" class="language-javascript">
     const [count, setCount] = useState(0);
-  </code>
-</pre>
+</script>
 
 The use state function takes a single argument and assigns that argument as the initial state value. With the State Hook, a state value can be an object or it can be a simpler value like a number or a string. In the above example it is the number 0.
-<br>
-<br>
+
 The useState function returns an array, with the first item holding the state value and the second item holding a function that is used to update the state value. Since it is destructured on the left of the = in the above example, count holds the state value and setCount holds the function for updating the value.
-<br>
-<br>
+
 With this, we can set up a state value for each field in the form and then call the corresponding update function (setValue) via the onChange property[3].
 
-<pre>
-  <code class="language-js">
+<script type="text/plain" class="language-javascript">
     function App() {
       const [firstName, setFirstName] = useState('');
       
@@ -49,20 +32,14 @@ With this, we can set up a state value for each field in the form and then call 
         <input name="firstName" onChange={e => setFirstName(e.target.value)} />
       );
     }
-  </code>
-</pre>
+</script>
 
+<b>OBJECTS, OBJECT LITERALS, DRY STATE UPDATES (ONCHANGE)</b>
+If there are a number of fields, it can sometimes be more concise to have one function that handles state updates for all the fields, rather than having one update function per field as would emerge in extending the example above.
 
-OBJECTS, OBJECT LITERALS, DRY STATE UPDATES (ONCHANGE)
-<br>
-<br>
-If there are a number of fields, it can sometimes be more concise to have one function that handles state updates for all the fields, rather than having one update function per field as would emerge in extending the example above.<br>
-<br>
-<br>
-In order to handle all state updates for this form with a single function, useState can be passed an object as the initial state value. Then, the update function will have access to an object containing all the form values. This single function can use an object literal to receive the object key and assign whatever value is updated. [4][5][SEE FUNCTION COMPONENT]<br>
+In order to handle all state updates for this form with a single function, useState can be passed an object as the initial state value. Then, the update function will have access to an object containing all the form values. This single function can use an object literal to receive the object key and assign whatever value is updated. [4][5]<a href="#function-component">[SEE FUNCTION COMPONENT]</a>
 
-<pre>
-  <code class="language-js">
+<script type="text/plain" class="language-javascript">
     const [state, setState] = useState({
       title: "",
       type: "post",
@@ -83,30 +60,17 @@ In order to handle all state updates for this form with a single function, useSt
         [name]: val,
       });
     }
-  </code>
-</pre>
+</script>
 
 <b>References</b>
-<br>
-<br>
-[1] https://blog.bitsrc.io/will-react-classes-get-deprecated-because-of-hooks-bb62938ac1f5
-<br>
-<br>
-[2] https://reactjs.org/docs/hooks-state.html
-<br>
-<br>
-[3] https://upmostly.com/tutorials/react-onchange-events-with-examples
-<br>
-<br>
-[4] https://www.pluralsight.com/guides/handling-multiple-inputs-with-single-onchange-handler-react
-<br>
-<br>
-[5] https://medium.com/@bretdoucette/understanding-this-setstate-name-value-a5ef7b4ea2b4
+[1] <a href="https://blog.bitsrc.io/will-react-classes-get-deprecated-because-of-hooks-bb62938ac1f5">https://blog.bitsrc.io/will-react-classes-get-deprecated-because-of-hooks-bb62938ac1f5</a>
+[2] <a href="https://reactjs.org/docs/hooks-state.html">https://reactjs.org/docs/hooks-state.html</a>
+[3] <a href="https://upmostly.com/tutorials/react-onchange-events-with-examples">https://upmostly.com/tutorials/react-onchange-events-with-examples</a>
+[4] <a href="https://www.pluralsight.com/guides/handling-multiple-inputs-with-single-onchange-handler-react">https://www.pluralsight.com/guides/handling-multiple-inputs-with-single-onchange-handler-react</a>
+[5] <a href="https://medium.com/@bretdoucette/understanding-this-setstate-name-value-a5ef7b4ea2b4">https://medium.com/@bretdoucette/understanding-this-setstate-name-value-a5ef7b4ea2b4</a>
 
 <span id="class-component"><b>Original (Class) Component</b></span>
-
-<pre>
-  <code class="language-js">
+<script type="text/plain" class="language-javascript">
     class createPostClass extends Component {
       state = {
         title: "",
@@ -199,13 +163,10 @@ In order to handle all state updates for this form with a single function, useSt
         );
       }
     }
-  </code>
-</pre>
+</script>
 
 <span id="function-component"><b>New (Function) Component</b></span>
-
-<pre>
-  <code class="language-js">
+<script type="text/plain" class="language-javascript">
     function createPost() {
       const [state, setState] = useState({
         title: "",
@@ -304,8 +265,4 @@ In order to handle all state updates for this form with a single function, useSt
         </Mutation>
       );
     }
-  </code>
-</pre>
-
-
-
+</script>
