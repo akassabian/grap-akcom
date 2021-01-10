@@ -152,8 +152,7 @@ const Home = (props) => (
             <p>
               I grew up in Whitby, Ontario. I'm an autodidactic polymath (self
               taught on broad range of topics) that gravitates towards
-              technology, art, health, and social systems. I began developing
-              websites professionaly in 2018.
+              technology, art, health, and social systems.
             </p>
           </div>
         </div>
