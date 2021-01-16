@@ -150,7 +150,7 @@ const Home = (props) => (
         <div className="row row-bio-2">
           <div className="col text-justify text-md-left">
             <p>
-              I grew up in Whitby, Ontario. I'm an autodidactic polymath (self
+              I'm an autodidactic polymath (self
               taught on broad range of topics) that gravitates towards
               technology, art, health, and social systems.
             </p>
