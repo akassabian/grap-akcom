@@ -150,9 +150,9 @@ const Home = (props) => (
         <div className="row row-bio-2">
           <div className="col text-justify text-md-left">
             <p>
-              I'm an autodidactic polymath (self
-              taught on broad range of topics) that gravitates towards
-              technology, art, health, and social systems.
+              I'm an autodidactic polymath (self taught on broad range of
+              topics) that gravitates towards technology, art, health, and
+              social systems.
             </p>
           </div>
         </div>
