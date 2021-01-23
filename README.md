@@ -26,6 +26,7 @@ Install on the host:
 
 ## Dokku Useful Commans
 `sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git`
+`dokku letsencrypt:auto-renew`
 
 ## Styles
 `frontend/components/Page.js` contains main styles
