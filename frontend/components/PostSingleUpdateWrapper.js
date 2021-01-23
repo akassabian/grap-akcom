@@ -24,25 +24,23 @@ const SINGLE_POST_QUERY = gql`
   }
 `;
 
-function PostSingleGet(Component){
-    return function ComponentWithPost(props){
-        return (
-            <Query
-            query={SINGLE_POST_QUERY}
-            variables={{
-                id: props.id,
-            }}
-            >
-            {({ data, loading }) => {
-                if (loading) return <p>Loading...</p>;
-                if (!data.post) return <p>No Post Found for ID {props.id}</p>;
-                return(
-                <Component postData={data} id={props.id} />
-                );
-            }}
-            </Query>
-        );
-    }
+function PostSingleGet(props){
+    return (
+        <Query
+          query={SINGLE_POST_QUERY}
+          variables={{
+            id: props.id,
+          }}
+        >
+          {({ data, loading }) => {
+            if (loading) return <p>Loading...</p>;
+            if (!data.post) return <p>No Post Found for ID {props.id}</p>;
+            return(
+            <UpdatePost postData={data} id={props.id} />
+            );
+          }}
+        </Query>
+      );
 }
 
 export default PostSingleGet;

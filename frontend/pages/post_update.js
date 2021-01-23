@@ -1,11 +1,13 @@
-import UpdatePost from '../components/UpdatePost';
-import PostSingleGet from '../components/PostSingleGet';
 import PleaseSignIn from '../components/PleaseSignIn';
+//import PostSingleUpdateWrapper from '../components/PostSingleUpdateWrapper';
+import PostSingleGet from '../components/PostSingleGet';
+import UpdatePost from '../components/UpdatePost';
+const UpdatePostWithSinglePost = PostSingleGet(UpdatePost);
 
 const UpdatePostPage = ({ query }) => (
   <div>
     <PleaseSignIn>
-      <PostSingleGet id={query.id} />
+      <UpdatePostWithSinglePost id={query.id} />
     </PleaseSignIn>
   </div>
 );
