@@ -1,8 +1,8 @@
 import PleaseSignIn from '../components/PleaseSignIn';
 //import PostSingleUpdateWrapper from '../components/PostSingleUpdateWrapper';
-import PostSingleGet from '../components/PostSingleGet';
+import WithPostSingleGet from '../components/WithPostSingleGet';
 import UpdatePost from '../components/UpdatePost';
-const UpdatePostWithSinglePost = PostSingleGet(UpdatePost);
+const UpdatePostWithSinglePost = WithPostSingleGet(UpdatePost);
 
 const UpdatePostPage = ({ query }) => (
   <div>

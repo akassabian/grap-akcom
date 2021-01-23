@@ -24,7 +24,7 @@ const SINGLE_POST_QUERY = gql`
   }
 `;
 
-function PostSingleGet(Component){
+function WithPostSingleGet(Component){
     return function ComponentWithPost(props){
         return (
             <Query
@@ -45,4 +45,4 @@ function PostSingleGet(Component){
     }
 }
 
-export default PostSingleGet;
+export default WithPostSingleGet;
