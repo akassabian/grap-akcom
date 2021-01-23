@@ -1,8 +1,11 @@
 import UpdatePost from '../components/UpdatePost';
+import PleaseSignIn from '../components/PleaseSignIn';
 
 const UpdatePostPage = ({ query }) => (
   <div>
-    <UpdatePost id={query.id} />
+    <PleaseSignIn>
+      <UpdatePost id={query.id} />
+    </PleaseSignIn>
   </div>
 );
 
