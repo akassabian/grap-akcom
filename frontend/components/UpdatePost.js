@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Mutation, Query } from "react-apollo";
 import gql from "graphql-tag";
 import Router from "next/router";
@@ -55,6 +55,149 @@ const UPDATE_POST_MUTATION = gql`
     }
   }
 `;
+
+function UpdatePostFunction(){
+  const [state, setState] = useState({
+    title: "",
+    type: "",
+    content: "",
+    comment_status: "",
+    slug: "",
+    parent: ""
+  });
+
+  function handleChange(e) {
+    const { name, type, value } = e.target;
+    //if type === number then set VAL to the Floating Integer of VALUE, else set VAL to VALUE
+    const val = type === "number" ? parseFloat(value) : value;
+    setState({ 
+      ...state,
+      [name]: val });
+  }
+
+  /*updatePost = async (e, updatePostMutation) => {
+    e.preventDefault();
+    console.log("Updating Post!!");
+    console.log(state);
+    const res = await updatePostMutation({
+      variables: {
+        id: props.id,
+        ...state,
+      },
+    });
+    console.log("Updated!!");
+  };*/
+    return (
+      <Query
+        query={SINGLE_POST_QUERY}
+        variables={{
+          id: props.id,
+        }}
+      >
+        {({ data, loading }) => {
+          if (loading) return <p>Loading...</p>;
+          if (!data.post) return <p>No Post Found for ID {this.props.id}</p>;
+          return (
+            <Mutation mutation={UPDATE_POST_MUTATION} variables={state}>
+              {(updatePost, { loading, error }) => (
+                <Form onSubmit={(e) => this.updatePost(e, updatePost)}>
+                  <Error error={error} />
+                  <fieldset disabled={loading} aria-busy={loading}>
+                    <label htmlFor="title">
+                      Title
+                      <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Title"                        
+                        defaultValue={data.post.title}
+                        onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="type">
+                      Type
+                      <input
+                        type="text"
+                        id="type"
+                        name="type"
+                        placeholder="Define Post Type"                        
+                        defaultValue={data.post.type}
+                        onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="slug">
+                      Slug
+                      <input
+                        type="text"
+                        id="slug"
+                        name="slug"
+                        placeholder="Enter URL Slug"                        
+                        defaultValue={data.post.slug}
+                        onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="excerpt">
+                      Excerpt
+                      <input
+                        type="text"
+                        id="excerpt"
+                        name="excerpt"
+                        placeholder="Enter Excerpt"                        
+                        defaultValue={data.post.excerpt}
+                        onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="comment_status">
+                      Comment Status
+                      <input
+                        type="text"
+                        id="comment_status"
+                        name="comment_status"
+                        placeholder="Turn Comments on or Off"                        
+                        defaultValue={data.post.comment_status}
+                        onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="parent">
+                      Parent
+                      <input
+                        type="number"
+                        id="parent"
+                        name="parent"
+                        placeholder="Enter ID of Parent Element"                        
+                        defaultValue={data.post.parent}
+                        onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="content">
+                      Content
+                      <textarea
+                        id="content"
+                        name="content"
+                        placeholder="Enter the content"                        
+                        defaultValue={data.post.content}
+                        onChange={handleChange}
+                      />
+                    </label>
+                    <button type="submit">
+                      Sav{loading ? "ing" : "e"} Changes
+                    </button>
+                  </fieldset>
+                </Form>
+              )}
+            </Mutation>
+          );
+        }}
+      </Query>
+    );
+
+}
 
 class UpdatePost extends Component {
   state = {};
@@ -189,5 +332,5 @@ class UpdatePost extends Component {
   }
 }
 
-export default UpdatePost;
+export default UpdatePostFunction;
 export { UPDATE_POST_MUTATION };
