@@ -84,13 +84,13 @@ const SINGLE_POST_QUERY = gql`
     }
   }
 `;
-class SinglePost extends Component {
-  render() {
+
+function SinglePost(props){
     return (
       <Query
         query={SINGLE_POST_QUERY}
         variables={{
-          id: this.props.id,
+          id: props.id,
         }}
       >
         {({ error, loading, data }) => {
@@ -142,7 +142,7 @@ class SinglePost extends Component {
         }}
       </Query>
     );
-  }
+  
 }
 
 export default SinglePost;
