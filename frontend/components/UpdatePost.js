@@ -56,7 +56,7 @@ const UPDATE_POST_MUTATION = gql`
   }
 `;
 
-function UpdatePostFunction(){
+function UpdatePost(props){
   const [state, setState] = useState({
     title: "",
     type: "",
@@ -75,18 +75,18 @@ function UpdatePostFunction(){
       [name]: val });
   }
 
-  /*updatePost = async (e, updatePostMutation) => {
-    e.preventDefault();
-    console.log("Updating Post!!");
-    console.log(state);
-    const res = await updatePostMutation({
-      variables: {
-        id: props.id,
-        ...state,
-      },
-    });
-    console.log("Updated!!");
-  };*/
+   /* updatePost = async (e, updatePostMutation) => {
+      e.preventDefault();
+      console.log("Updating Post!!");
+      console.log(state);
+      const res = await updatePostMutation({
+        variables: {
+          id: props.id,
+          ...state,
+        },
+      });
+      console.log("Updated!!");
+    };*/
     return (
       <Query
         query={SINGLE_POST_QUERY}
@@ -96,11 +96,27 @@ function UpdatePostFunction(){
       >
         {({ data, loading }) => {
           if (loading) return <p>Loading...</p>;
-          if (!data.post) return <p>No Post Found for ID {this.props.id}</p>;
+          if (!data.post) return <p>No Post Found for ID {props.id}</p>;
           return (
             <Mutation mutation={UPDATE_POST_MUTATION} variables={state}>
               {(updatePost, { loading, error }) => (
-                <Form onSubmit={(e) => this.updatePost(e, updatePost)}>
+                <Form onSubmit={async (e) => {
+                  // Stop the form from submitting
+                  e.preventDefault();
+                  // call the mutation
+                  const res = await updatePost({
+                    variables: {
+                      id: props.id,
+                      ...state,
+                    },
+                  });
+                  // change them to the single item page
+                  console.log(res);
+                  /*Router.push({
+                  pathname: '/item',
+                  query: { id: res.data.createPost.id },
+                });*/
+                }}>
                   <Error error={error} />
                   <fieldset disabled={loading} aria-busy={loading}>
                     <label htmlFor="title">
@@ -199,7 +215,7 @@ function UpdatePostFunction(){
 
 }
 
-class UpdatePost extends Component {
+class UpdatePostClass extends Component {
   state = {};
   handleChange = (e) => {
     const { name, type, value } = e.target;
@@ -332,5 +348,5 @@ class UpdatePost extends Component {
   }
 }
 
-export default UpdatePostFunction;
+export default UpdatePost;
 export { UPDATE_POST_MUTATION };
