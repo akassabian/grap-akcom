@@ -24,6 +24,9 @@ Install on the host:
 `git subtree push --prefix backend dokku-back master`
 `git subtree push --prefix frontend dokku-front master`
 
+## Dokku Useful Commans
+`sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git`
+
 ## Styles
 `frontend/components/Page.js` contains main styles
 
