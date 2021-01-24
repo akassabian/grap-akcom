@@ -44,6 +44,14 @@ const Mutations = {
     const updates = { ...args };
     // remove the ID from the updates
     delete updates.id;
+    // Check if ADMIN
+    const hasPermissions = ctx.request.user.permissions.some(permission =>
+      ['ADMIN'].includes(permission)
+    );
+
+    if (!hasPermissions) {
+      throw new Error("You don't have permission to do that!");
+    }
     // run the update method
     return ctx.db.mutation.updatePost(
       {

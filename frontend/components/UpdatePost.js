@@ -89,6 +89,8 @@ function UpdatePost(props) {
                 id: props.id,
                 ...state,
               },
+            }).catch(err => {
+              alert(err.message);
             });
             // change them to the single item page
             console.log(res);
