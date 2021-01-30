@@ -19,14 +19,24 @@ Install on the host:
 1. Run `prisma deploy` in `backend/prisma`
 1. Run `npm run dev` in `backend/` and `frontend/`
 
+## Setup New Client to Push to Dokku
+
+1. On local client `run ssh-keygen -t rsa`
+1. Login to root of server where dokku is installed and add ssh key for root (name root@host as dokku-root in local ssh config file)
+1. Copy public key to server using root
+1. As root, run `dokku ssh-keys:add dokku path/to/id_rsa.pub`
+1. Use local ssh config so host name `dokku` points to `dokku@dokku-ip`
+1. on local, run `git remote add akcom_back dokku:akcom_back`
+1. on local, run `git remote add akcom_front dokku:akcom_front`
+
 ## Dokku Deploy
 
-`git subtree push --prefix backend dokku-back master`
-`git subtree push --prefix frontend dokku-front master`
+1. `git subtree push --prefix backend akcom_back master`
+1. `git subtree push --prefix frontend akcom_front master`
 
-## Dokku Useful Commans
-`sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git`
-`dokku letsencrypt:auto-renew`
+## Dokku Useful Commands
+1. `sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git`
+1. `dokku letsencrypt:auto-renew`
 
 ## Styles
 `frontend/components/Page.js` contains main styles
