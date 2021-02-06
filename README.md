@@ -26,7 +26,7 @@ Install on the host:
 1. Copy public key to server using root
 1. As root, run `dokku ssh-keys:add dokku path/to/id_rsa.pub`
 1. Use local ssh config so host name `dokku` points to `dokku@dokku-ip`
-1. on local, run `git remote add akcom_back dokku:akcom_back`
+1. on local, run `git remote add akcom_back dokku:akcom-back`
 1. on local, run `git remote add akcom_front dokku:akcom_front`
 
 ## Dokku Deploy
