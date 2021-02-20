@@ -41,16 +41,18 @@ const BgAjkDark = styled.div`
 
     .topics-container {
       position: relative;
-      border: 1px solid #262626;
+      border: 3px solid #262626;
       border-radius: 25px;
       width: 100%;
       height: 95%;
       text-decoration: none;
       color: white;
       transition: 0.2s ease;
+      display: flex;
+      justify-content: center;
     }
     .topics-container:hover {
-      border: 1px solid #0e0e0e;
+      border: 3px solid #fff;
     }
 
     img {
@@ -62,13 +64,14 @@ const BgAjkDark = styled.div`
       width: 100%;
       height: 100%;
       transition: 0.2s ease;
-      background-color: black;
+      background-color: #0e0e0e;
       opacity: 0;
       top: 0;
       border-radius: 25px;
     }
     .topics-container:hover .topics-overlay {
-      opacity: 0.9;
+      opacity:0.9;
+      //opacity: 0.98;
     }
   }
 
@@ -95,6 +98,9 @@ const BgAjkDark = styled.div`
     text-decoration: none;
   }
   @media (min-width: 768px) {
+    .mobile-topic-title{
+      display: none;
+    }
     .row-bio {
       margin: 0 0 50px;
       .bio_pic_col {
@@ -143,16 +149,14 @@ const Home = (props) => (
           <div className="col-xs-12 col-md-6 d-flex flex-column justify-content-center">
             <p className="text-center text-md-left">
               Hello! My name is Alain (AJ).
-              <br />I am a Mississauga based web developer.
+              <br />I am a Toronto based web developer.
             </p>
           </div>
         </div>
         <div className="row row-bio-2">
           <div className="col text-justify text-md-left">
             <p>
-              I'm an autodidactic polymath (self taught on broad range of
-              topics) that gravitates towards technology, art, health, and
-              social systems.
+            I'm self taught on a broad range of topics and gravitate towards technology, art, health, and social systems.
             </p>
           </div>
         </div>
@@ -161,37 +165,26 @@ const Home = (props) => (
       <div className="container topics">
         <ul className="row row-topics justify-content-center">
           <li className="col-12 col-md-6 d-flex justify-content-center flex-wrap">
-            <Link href="https://registry.jsonresume.org/akassabian">
-              <a className="topics-container">
-                <img alt="Image for Web Resume" src="/static/web-resume.svg" />
-                <div className="topics-overlay text-center d-flex flex-column justify-content-center">
-                  <span>View Resume</span>
-                </div>
-              </a>
-            </Link>
-            <p>Web</p>
-          </li>
-          <li className="col-12 col-md-6 d-flex justify-content-center flex-wrap">
             <Link href="tech">
               <a className="topics-container">
-                <img alt="Image for Tech Blog" src="/static/tech.svg" />
+                <img alt="Image for Tech Blog" src="/static/code-icon.svg" />
                 <div className="topics-overlay text-center d-flex flex-column justify-content-center">
-                  <span>View Blog</span>
+                  <span>Tech Musings</span>
                 </div>
               </a>
             </Link>
-            <p>Technology</p>
+            <p class="mobile-topic-title">Tech Musings</p>
           </li>
           <li className="col-12 col-md-6 d-flex justify-content-center flex-wrap">
             <Link href="health">
               <a className="topics-container">
-                <img alt="Image for Health Blog" src="/static/health.svg" />
+                <img alt="Image for Health Blog" src="/static/health-icon.svg" />
                 <div className="topics-overlay text-center d-flex flex-column justify-content-center">
-                  <span>View Blog</span>
+                  <span>Health Musings</span>
                 </div>
               </a>
             </Link>
-            <p>Health</p>
+            <p class="mobile-topic-title">Health Musings</p>
           </li>
         </ul>
       </div>
